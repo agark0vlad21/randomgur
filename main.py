@@ -1,3 +1,5 @@
+import random, string, requests, time
+
 token = "" # token of your bot
 url = "https://api.telegram.org/bot"
 channel_id = "" # username or id of channel
