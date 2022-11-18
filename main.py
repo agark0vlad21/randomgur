@@ -1,23 +1,31 @@
-import random, string, requests, time
+import random
+import string
+from requests import get, post
+from time import sleep as wait
 
-token = "" # token of your bot
-url = "https://api.telegram.org/bot"
-channel_id = "" # username or id of channel
-url += token
-method = url + "/sendPhoto"
+TOKEN = "" # token of your bot
+URL = "https://api.telegram.org/bot"
+CHAT_ID = "" # username or id of chat
+URL += TOKEN
+METHOD = URL + "/sendPhoto"
 
-
-def generate_alphanum_random_string(length):
-    letters_and_digits = string.ascii_letters + string.digits
-    rand_string = ''.join(random.sample(letters_and_digits, length))
-    link = f"https://i.imgur.com/{rand_string}.jpg"
-    #print(link)
-    response = requests.get(link)
-    if response.history:
-        print("url is not valid")
-    else:
-        print("valid url, downloading image")
-        requests.post(method, data={ "chat_id": channel_id, "photo": link })
-        time.sleep(1)
+def try_send(length):
+    try:
+        letters_and_digits = string.ascii_letters + string.digits
+        rand_string = ''.join(random.sample(letters_and_digits, length))
+        link = f"https://i.imgur.com/{rand_string}.jpg"
+        response = get(link)
+        if response.history:
+            print("\u001b[31murl is not valid\u001b[0m")
+        else:
+            print("\u001b[32mgot valid url, sending image\u001b[0m")
+            post(METHOD, data={ "chat_id": CHAT_ID, "photo": link })
+            wait(1)
+    except (EOFError, KeyboardInterrupt):
+            print ("\n\u001b[36mBye!\u001b[0m")
+            exit(0)
+    except Exception:
+            print ("\u001b[31;1merror has been occured when downloading or checking image\u001b[0m")
+            wait(1)
 while True:
-    generate_alphanum_random_string(5)
+    try_send(5)
