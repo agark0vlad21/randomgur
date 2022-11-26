@@ -2,11 +2,7 @@
 
 from random import sample
 from string import digits, ascii_letters
-try:
-    from requests import get, post
-except ModuleNotFoundError:
-    print("looks like you don't install requests library, try to install it with 'pip install requests'")
-    exit(1)
+from requests import get, post
 from time import sleep as wait
 
 TOKEN = "" # token of your bot
