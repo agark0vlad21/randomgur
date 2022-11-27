@@ -6,7 +6,7 @@ from requests import get, post
 from time import sleep as wait
 
 TOKEN = "" # token of your bot
-CHAT_ID = "" # chat id to send photos, like @telegram, or -1825122896521
+CHAT_ID = "" # chat id for send photos, like @telegram, or -1825122896521
 METHOD = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
 
 if TOKEN.strip() == "":
