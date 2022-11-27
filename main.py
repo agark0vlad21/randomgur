@@ -23,7 +23,7 @@ def try_send_with(length):
     try:
         letters_and_digits = ascii_letters + digits
         image_id = ''.join(sample(letters_and_digits, length))
-        if get(f"https://i.imgur.com/{image_id}.jpg", allow_redirects=False).history:
+        if get(f"https://i.imgur.com/{image_id}.jpg").history:
             print("\u001b[31murl is not valid\u001b[0m")
         else:
             print("\u001b[32mgot valid url, sending image\u001b[0m")
