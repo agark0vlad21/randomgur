@@ -21,8 +21,7 @@ else:
         exit(2)
 def try_send_with(length):
     try:
-        letters_and_digits = ascii_letters + digits
-        image_id = ''.join(sample(letters_and_digits, length))
+        image_id = ''.join(sample(ascii_letters + digits, length))
         if get(f"https://i.imgur.com/{image_id}.jpg", allow_redirects=False).status_code != 200:
             print("\u001b[31murl is not valid\u001b[0m")
         else:
