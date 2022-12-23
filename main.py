@@ -34,5 +34,6 @@ def try_send_with(length):
     except Exception:
             print ("\u001b[31;1merror has been occured when downloading or checking image\u001b[0m")
             wait(1)
-while True:
-    try_send_with(5)
+if __name__ == "__main__":
+    while True:
+        try_send_with(5)
